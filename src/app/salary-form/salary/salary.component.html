@@ -1,0 +1,15 @@
+<form >
+  <div class="form-group">
+    <label for="firstName">Name</label>
+    <input ([ngModel])='username' (change)="log(username)" id="firstName" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input ([ngModel])='useremail' type="text" id="email" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="salary">Salary</label>
+    <input ([ngModel])='usersalary' type="text" id="salary" class="form-control">
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>
