@@ -1,15 +1,40 @@
-<form >
-  <div class="form-group">
-    <label for="firstName">Name</label>
-    <input ([ngModel])='username' (change)="log(username)" id="firstName" type="text" class="form-control">
+<form [formGroup]="salaryForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+  <div class="container">
+    <div class="row">
+      <h3>Input Salary</h3>
+    </div>
+    <div class="container">
+      <div class="form-group">
+        <label class ="col-sm-2 control-label" for="firstName">Name</label>
+      
+      <div class="col-sm-8">
+        <input formControlName="name" id="firstName" type="text" class="form-control" required>
+      </div>
+    </div>
+      <div class="form-group">
+        <label class ="col-sm-2 control-label" for="email">Email</label>
+      
+      <div class="col-sm-8">
+        <input formControlName="email" type="text" id="email" class="form-control" required>
+      </div>
+    </div>
+      <div class="form-group" >
+        <label class ="col-sm-2 control-label" for="salary">Salary</label>
+        <div class="col-sm-8">
+          <input formControlName="salary" type="text" id="salary" class="form-control" required>
+        </div>
+      </div>
+    </div>
+    <div class="container" style='padding-top: 2%;padding-left: 2%;'>
+      <div class="row">
+        <div class="col-sm-4">
+          <button class="btn btn-primary" name="submit" value="Submit">Submit</button>
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-primary" name='searchpage' (click)="onbtnClick()">Go to Search</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input ([ngModel])='useremail' type="text" id="email" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="salary">Salary</label>
-    <input ([ngModel])='usersalary' type="text" id="salary" class="form-control">
-  </div>
-  <button class="btn btn-primary">Submit</button>
 </form>
+
