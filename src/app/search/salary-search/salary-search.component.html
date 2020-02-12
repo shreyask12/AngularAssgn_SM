@@ -6,7 +6,7 @@
           <label class ="col-md-4 control-label" for="search">Search by Salary</label>
         </div>
         <div class="col-md-8">
-          <input formControlName="search" id="" type="text" class="form-control" required>
+          <input formControlName="search" id="inputsalary" class="form-control" maxlength="11" appNumbersonly required>
         </div>
       </div>
       <div class="col-md-6">
@@ -14,9 +14,10 @@
           <label class ="col-md-4 control-label" for="selectSalary">Betweeen Range</label>
         </div>
         <div class="col-md-8">
-          <select class="form-control" title="Select Range" formControlName="selectfilter" id="select1">
-            <option value="1">Greater Than</option>
-            <option value="0">Less Than</option>
+          <select class="form-control" formControlName="selectSalary" (change)="onChange($event)" id="select1">
+            <option value="">Select Range</option>
+            <option value="Greater than">Greater Than</option>
+            <option value="Less than">Less Than</option>
           </select>
         </div>
       </div>
@@ -29,17 +30,19 @@
 <div class="container" style="padding-top: 5%;">
   <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-4" *ngIf="showtable">
       <table style="width:100%">
         <tr>
+          <!-- <th>No.</th> -->
           <th>Name</th>
           <th>Email</th>
           <th>Salary</th>
         </tr>
-        <tr *ngFor="let item of usersdata; index as i">
-          <td>{{item.name}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.salary}}</td>
+        <tr *ngFor="let item of usersdata ">
+          <!-- <td>{{i + 1}}</td> -->
+          <td>{{item?.name}}</td>
+          <td>{{item?.email}}</td>
+          <td>{{item?.salary}}</td>
         </tr>
       </table> 
     </div>

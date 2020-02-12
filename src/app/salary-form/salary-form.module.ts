@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SalaryComponent } from './salary/salary.component';
 import { SalaryRoutingModule } from './salary/salary.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MyCommonModule } from '../my-common/my-common.module';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SalaryRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MyCommonModule
   ],
   bootstrap: [SalaryComponent]
 })

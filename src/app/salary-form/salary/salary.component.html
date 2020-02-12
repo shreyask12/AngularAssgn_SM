@@ -1,40 +1,55 @@
-<form [formGroup]="salaryForm" (ngSubmit)="onSubmit()" class="form-horizontal">
-  <div class="container">
-    <div class="row">
-      <h3>Input Salary</h3>
-    </div>
-    <div class="container">
-      <div class="form-group">
-        <label class ="col-sm-2 control-label" for="firstName">Name</label>
-      
-      <div class="col-sm-8">
-        <input formControlName="name" id="firstName" type="text" class="form-control" required>
-      </div>
-    </div>
-      <div class="form-group">
-        <label class ="col-sm-2 control-label" for="email">Email</label>
-      
-      <div class="col-sm-8">
-        <input formControlName="email" type="text" id="email" class="form-control" required>
-      </div>
-    </div>
-      <div class="form-group" >
-        <label class ="col-sm-2 control-label" for="salary">Salary</label>
-        <div class="col-sm-8">
-          <input formControlName="salary" type="text" id="salary" class="form-control" required>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-6">
+    <form [formGroup]="salaryForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+      <div class="container">
+        <div class="row">
+          <h3>Input Salary</h3>
+        </div>
+        <div class="container">
+          <div class="form-group">
+            <label class ="col-sm-2 control-label" for="firstName">Name</label>
+          
+          <div class="col-sm-8">
+            <input formControlName="name" id="firstName" type="text" class="form-control" required>
+          </div>
+        </div>
+          <div class="form-group">
+            <label class ="col-sm-2 control-label" for="email">Email</label>
+          
+          <div class="col-sm-8">
+            <input formControlName="email" type="text" id="email" class="form-control" required>
+          </div>
+        </div>
+          <div class="form-group" >
+            <label class ="col-sm-4 control-label" for="salary">Salary(In numbers Only)</label>
+            <div class="col-sm-8">
+              <input formControlName="salary" type="text" id="salary" appDigitsOnly class="form-control" maxlength="11" required>
+            </div>
+          </div>
+        </div>
+        <div class="container" style='padding-top: 2%;padding-left: 2%;'>
+          <div class="row">
+            <div class="col-sm-4">
+              <button class="btn btn-primary" name="submit" value="Submit" [disabled]="salaryForm.invalid">Submit</button>
+            </div>
+            <div class="col-sm-4">
+              <button class="btn btn-primary" name='searchpage' (click)="onbtnClick()">Go to Search</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="container" style='padding-top: 2%;padding-left: 2%;'>
-      <div class="row">
-        <div class="col-sm-4">
-          <button class="btn btn-primary" name="submit" value="Submit">Submit</button>
-        </div>
-        <div class="col-sm-4">
-          <button class="btn btn-primary" name='searchpage' (click)="onbtnClick()">Go to Search</button>
+      <div class="row" *ngIf="showMsg" >
+        <div class="col-xs-12 successdiv">
+          <p class="alert alert-success">
+              <strong>Form Submitted Successfully!</strong>
+
+          </p>
         </div>
       </div>
-    </div>
+
+  <!-- <button class="btn btn-success">Add user</button> -->
+    </form>
   </div>
-</form>
+</div>
 
