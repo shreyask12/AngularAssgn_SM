@@ -13,7 +13,7 @@ export class SalarySearchComponent implements OnInit {
 
   Searchsalaryform : FormGroup;
   
-  usersdata : any = [];
+  usersdata : Array<Object> = [];
   showtable : boolean;
   rangeSelect ="";
   usersinfoservice : any;
@@ -25,57 +25,25 @@ export class SalarySearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    
     this.Searchsalaryform = new FormGroup({
       search : new FormControl(),
       selectSalary : new FormControl(''),
     });
 
-
-    this.usersinfoservice = this.salaryService.getFormData();
+    this.usersinfoservice = JSON.parse(localStorage.getItem('userInfo'));
+    
+    
     // console.log(this.usersinfoservice);
-// 
     if(this.usersinfoservice == undefined){
       this.router.navigate(['']);
     }
 
     this.usersdata =  this.usersinfoservice;
    
-    // console.log(this.usersdata);
   
-    this.usersdata.length > 0 ? this.showtable = true :  this.showtable = false;
+  
+  
 
   }
-
-  onChange(e) {
-    console.log(e.target.value);
-    var f = this.Searchsalaryform.value.search;
-
-  //   if(e.target.value == 'Greater than'){
-  //     this.usersdata = this.usersdata.filter(function (el) {
-  //         return el.salary > f;
-  //     });
-  //     console.log(this.usersdata);
-  // }else{
-  //   this.usersdata = this.usersdata.filter(function (el) {
-  //     return el.salary < f;
-  // });
-  //   console.log(this.usersdata);
-  // }
-
-    // for(let i=0;i<this.usersdata.length;i++){
-    //   if(e.target.value == 'Greater than'){
-    //     if(this.usersdata[i].salary > f){
-
-    //     }
-    //   }
-
-    // }
-    
-
-  }
-
-
 
 }

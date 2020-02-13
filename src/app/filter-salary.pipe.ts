@@ -1,27 +1,16 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, Input } from '@angular/core';
 
 @Pipe({
-  name: 'filterSalary'
-  
+  name: 'filterSalary',
+  // pure : true,
 })
-export class FilterSalaryPipe implements PipeTransform {
 
-  transform(value: any, selectedvalue?: any,): any {
-    // if(selectedvalue != ""){
-      // if(selectedvalue == 'Greater than'){
-      //   // return value.filter(item => item.salary > salary);
-      //   let result = value.filter(item => item.salary > salary);
-      //   console.log(result);
-      //   return result;
-      // }
-      // else if(selectedvalue == 'Less than'){
-      //   let result = value.filter(item => item.salary < salary);
-      //   console.log(result);
-      //   return result;
-      // }else{
-      //   return value;
-      // }
-    // }
+
+export class FilterSalaryPipe implements PipeTransform {
+  result = [];
+  transform(value: any, selectedvalue?: any,salary ?: any): any {
+        
+        return this.result = selectedvalue == 'Greater than' ? value.filter(item => Number(item.salary) > Number(salary)) : (selectedvalue == '' ? value : value.filter(item => Number(item.salary) < Number(salary)));
     
   }
   

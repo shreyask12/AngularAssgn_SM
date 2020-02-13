@@ -7,9 +7,7 @@ export class SalaryformsService {
 
   constructor() { }
 
-  formdata;
-
-
+  private formdata;
 
   setFormData(value){
     

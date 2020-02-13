@@ -33,23 +33,25 @@
             <div class="col-sm-4">
               <button class="btn btn-primary" name="submit" value="Submit" [disabled]="salaryForm.invalid">Submit</button>
             </div>
-            <div class="col-sm-4">
-              <button class="btn btn-primary" name='searchpage' (click)="onbtnClick()">Go to Search</button>
-            </div>
           </div>
         </div>
       </div>
-      <div class="row" *ngIf="showMsg" >
-        <div class="col-xs-12 successdiv">
-          <p class="alert alert-success">
-              <strong>Form Submitted Successfully!</strong>
-
-          </p>
-        </div>
-      </div>
-
-  <!-- <button class="btn btn-success">Add user</button> -->
     </form>
+    <div class="button" style='padding-top: 2%'>
+      <button class="btn btn-primary" name='searchpage' (click)="onbtnClick()">Go to Search</button>
+    </div>
+    <div class="row" *ngIf="showMsg" >
+      <div class="col-xs-12 successdiv">
+        <p class="alert alert-success">
+          <strong>Form Submitted Successfully!</strong>
+        </p>
+      </div>
+    </div>
+    <div class="row" *ngIf="showAlert">
+      <div class="alert alert-danger" role="alert">
+          Please fill the form first!
+      </div>
+    </div>
   </div>
 </div>
 

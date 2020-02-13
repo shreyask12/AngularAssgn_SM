@@ -12,13 +12,14 @@ import { SalaryformsService } from '../../salaryforms.service';
 
 export class SalaryComponent implements OnInit {
 
-  salaryForm: FormGroup;
+  salaryForm : FormGroup;
+  
+  temparray : Array<Object> = [];
 
-  userInfo : Array<Object> = [];
+  getarray :Array<Object> = [];
 
   showMsg : boolean = false;
-
-  userinfofirst : any;
+  showAlert : boolean = false;
   
   numericNumberReg= '^-?[0-9]\\d*(\\.\\d{1,2})?$';
 
@@ -27,12 +28,21 @@ export class SalaryComponent implements OnInit {
   }
 
   ngOnInit() {
+
+     this.getarray = this.salaryservice.getFormData();
+
+     if(this.getarray == undefined){
+      localStorage.clear();
+     }
+
+  //  console.log(this.getarray);
+
     
     this.salaryForm = new FormGroup({
       
       name : new FormControl('', Validators.required),
       email : new FormControl('', [Validators.required, Validators.pattern(/[^@]+@[^\.]+\..+/)]),
-      salary : new FormControl('', [Validators.required,]),
+      salary : new FormControl('', [Validators.required]),
       
     });
   }
@@ -40,25 +50,48 @@ export class SalaryComponent implements OnInit {
 
   onSubmit() : void {  
 
-    this.userInfo.push(this.salaryForm.value);
+    if(this.getarray == undefined){
+
+      localStorage.clear();
+      this.temparray.push(this.salaryForm.value);
+  
+    }else{
+      this.temparray = this.getarray;
+      this.temparray.push(this.salaryForm.value);
+      
+    }
 
     
-
-    this.salaryservice.setFormData(this.userInfo);
-
+    this.salaryservice.setFormData(this.temparray);
+    localStorage.setItem('userInfo',JSON.stringify(this.temparray));
+    
     this.showMsg = true;
+    this.showAlert = false;
 
     this.salaryForm.reset({ emitEvent: false });
 
-    
-    
   }
 
   onbtnClick() : void {
+ 
+  if(this.temparray.length == 0){
+    if(this.salaryForm.valid){
+      this.showAlert = false;
+      this.showMsg = false;
+      this.router.navigate(['/search']);
+     
+    }else{
+      this.showAlert = true;
+    }
+  }else{
+    this.router.navigate(['/search']);
+   
+  }
+  
 
-    localStorage.setItem('userInfo',JSON.stringify(this.userInfo));
     
-    this.router.navigate(['search']);
+    
+    
     
   }
 

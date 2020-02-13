@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { SalaryComponent } from './salary-form/salary/salary.component';
+import { SalarySearchComponent } from './search/salary-search/salary-search.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -11,6 +14,8 @@ const routes: Routes = [
     loadChildren : './search/search.module#SearchModule'
   },
 ];
+
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
