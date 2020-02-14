@@ -17,6 +17,7 @@ export class SalarySearchComponent implements OnInit {
   showtable : boolean;
   rangeSelect ="";
   usersinfoservice : any;
+  fromback : any;
 
 
   constructor(private salaryService : SalaryformsService,private router: Router) { 
@@ -25,6 +26,12 @@ export class SalarySearchComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.fromback = this.salaryService.getFormData();
+    if(this.fromback == undefined){
+      localStorage.clear();
+    }
+
     this.Searchsalaryform = new FormGroup({
       search : new FormControl(),
       selectSalary : new FormControl(''),
@@ -32,18 +39,17 @@ export class SalarySearchComponent implements OnInit {
 
     this.usersinfoservice = JSON.parse(localStorage.getItem('userInfo'));
     
-    
-    // console.log(this.usersinfoservice);
     if(this.usersinfoservice == undefined){
       this.router.navigate(['']);
     }
 
     this.usersdata =  this.usersinfoservice;
    
-  
-  
-  
-
   }
+
+  backclick(){
+    this.router.navigate(['']);
+  }
+
 
 }
