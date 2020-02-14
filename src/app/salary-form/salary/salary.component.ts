@@ -33,6 +33,8 @@ export class SalaryComponent implements OnInit {
 
      if(this.getarray == undefined){
       localStorage.clear();
+     }else{
+      this.temparray = this.getarray;
      }
 
   //  console.log(this.getarray);
