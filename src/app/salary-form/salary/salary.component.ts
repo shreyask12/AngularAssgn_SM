@@ -58,7 +58,7 @@ export class SalaryComponent implements OnInit {
       this.temparray.push(this.salaryForm.value);
   
     }else{
-      this.temparray = this.getarray;
+      // this.temparray = this.getarray;
       this.temparray.push(this.salaryForm.value);
       
     }
